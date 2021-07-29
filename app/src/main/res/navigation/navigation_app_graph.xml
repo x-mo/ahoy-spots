@@ -5,7 +5,7 @@
     <!--android:name="com.xmo.dynamicfeatures.home.ui.HomeFragment"-->
     <fragment
         android:id="@+id/home_fragment"
-
+android:name="com.xmo.home.HomeFragment"
         android:label="HomeFragment">
     </fragment>
 </navigation>
