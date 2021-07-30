@@ -7,7 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.xmo.core.network.repositiories.OCMRepository
-import com.xmo.list.spotslist.model.SpotsList
+import com.xmo.list.spotslist.model.SpotsItem
 import com.xmo.list.spotslist.model.SpotsListMapper
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -19,8 +19,8 @@ class SpotsListViewModel @Inject constructor(
     val spotsListMapper: SpotsListMapper
 ) : ViewModel() {
 
-    private val _data = MutableLiveData<SpotsList>()
-    val data: LiveData<SpotsList>
+    private val _data = MutableLiveData<List<SpotsItem>>()
+    val data: LiveData<List<SpotsItem>>
         get() = _data
 
     private val _state = MutableLiveData<SpotsListViewState>()
@@ -28,13 +28,12 @@ class SpotsListViewModel @Inject constructor(
         get() = _state
 
 
-    fun loadSpotsList(spotId: Int) {
+    fun loadSpotsList(lat: Double, lng: Double) {
         _state.postValue(SpotsListViewState.Loading)
         viewModelScope.launch {
             try {
-                val result = ocmRepository.getSpot(spotId)
+                val result = ocmRepository.getSpots(lat = lat, lng = lng)
                 _data.postValue(spotsListMapper.map(result))
-
             } catch (e: Exception) {
                 _state.postValue(SpotsListViewState.Error)
             }

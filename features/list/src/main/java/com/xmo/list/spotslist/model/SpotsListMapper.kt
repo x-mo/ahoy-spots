@@ -8,26 +8,19 @@ import com.xmo.core.network.responses.SpotsResponse
  *
  * @see Mapper
  */
-class SpotsListMapper : Mapper<SpotsResponse, SpotsList> {
+class SpotsListMapper : Mapper<SpotsResponse, List<SpotsItem>> {
 
-    /**
-     * Transform network response to [SpotsList].
-     *
-     * @param from Network spots response.
-     * @return List of parsed spots items.
-     * @throws NoSuchElementException If the response results are empty.
-     */
-    @Throws(NoSuchElementException::class)
-    override suspend fun map(from: SpotsResponse): SpotsList {
-        val spotResponse = from.first()
-        return SpotsList(
-            id = spotResponse.ID,
-            distance = spotResponse.AddressInfo.Distance,
-            numberOfPoints = spotResponse.NumberOfPoints,
-            town = spotResponse.AddressInfo.Town,
-            addressTitle = spotResponse.AddressInfo.Title,
-            websiteUrl = spotResponse.DataProvider.WebsiteURL,
-            generalComments = spotResponse.GeneralComments
-        )
-    }
+    override suspend fun map(from: SpotsResponse) =
+        from.toList().map {
+            SpotsItem(
+                id = it.ID,
+                distance = it.AddressInfo.Distance,
+                numberOfPoints = it.NumberOfPoints,
+                town = it.AddressInfo.Town,
+                addressTitle = it.AddressInfo.Title,
+                websiteUrl = it.DataProvider.WebsiteURL,
+                generalComments = it.GeneralComments
+            )
+        }
+
 }

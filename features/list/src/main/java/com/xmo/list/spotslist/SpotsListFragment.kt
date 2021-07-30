@@ -27,9 +27,9 @@ class SpotsListFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
-        viewModel.loadSpotsList(99851)
+        viewModel.loadSpotsList(25.204849,55.270782)
 
-        observe(viewModel.data) { Log.d("xox", it.generalComments) }
+        observe(viewModel.data) { Log.d("xox", it.toString()) }
     }
 
     override fun onInitDependencyInjection() {
