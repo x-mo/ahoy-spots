@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/spot_details_fragment">
+    xmlns:tools="http://schemas.android.com/tools"
+    app:startDestination="@id/spots_list_fragment">
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.xmo.home.HomeFragment"
-        android:label="Home">
+        android:label="Home"
+        tools:layout="@layout/fragment_home">
 
         <action
             android:id="@+id/action_home_fragment_to_spots_list_fragment"
@@ -16,9 +18,9 @@
     <fragment
         android:id="@+id/spots_list_fragment"
         android:name="com.xmo.list.spotslist.SpotsListFragment"
-        android:label="Spots">
-        <deepLink
-            app:uri="android-app://spots.xmo.app/spots_list_fragment" />
+        android:label="Spots"
+        tools:layout="@layout/fragment_spot_list">
+        <deepLink app:uri="android-app://spots.xmo.app/spots_list_fragment" />
         <action
             android:id="@+id/action_spotsListFragment_to_spot_details_fragment"
             app:destination="@+id/spot_details_fragment"
@@ -32,7 +34,8 @@
     <fragment
         android:id="@+id/spot_details_fragment"
         android:name="com.xmo.list.spotdetails.SpotDetailsFragment"
-        android:label="Details">
+        android:label="Details"
+        tools:layout="@layout/fragment_spot_details">
         <argument
             android:name="spot_id"
             android:defaultValue="99851"
