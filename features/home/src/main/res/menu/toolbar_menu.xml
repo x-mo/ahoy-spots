@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:icon="@drawable/ic_baseline_settings"
+        android:id="@+id/menu_toggle_filter"
+        android:title="@string/home_toolbar_filter"
+        app:showAsAction="ifRoom" />
+    <item
+        android:icon="@drawable/ic_baseline_filter"
+        android:id="@+id/menu_toggle_settings"
+        android:title="@string/home_toolbar_settings"
+        app:showAsAction="always"/>
+</menu>

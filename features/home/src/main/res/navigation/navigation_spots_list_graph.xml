@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_spots_list_graph"
+    app:startDestination="@+id/spots_list_fragment"
+    tools:ignore="UnusedNavigation,UnusedIds">
+    <fragment
+        android:id="@+id/spots_list_fragment"
+        android:name="com.xmo.list.spotslist.SpotsListFragment"
+        android:label="Spots">
+        <action
+            android:id="@+id/action_spotsListFragment_to_spot_details_fragment"
+            app:destination="@+id/spot_details_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/spots_list_fragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/spot_details_fragment"
+        android:name="com.xmo.list.spotdetails.SpotDetailsFragment">
+        <argument
+            android:name="spot_id"
+            app:argType="int" />
+    </fragment>
+</navigation>

@@ -1,46 +1,41 @@
 package com.xmo.home
 
-import android.content.Context
 import android.os.Bundle
 import android.view.*
-import androidx.databinding.DataBindingUtil
-import androidx.fragment.app.Fragment
+import com.xmo.core.base.BaseFragment
 import com.xmo.home.databinding.FragmentHomeBinding
 import com.xmo.home.di.DaggerHomeComponent
 import com.xmo.home.di.HomeModule
 import com.xmo.spots.App
-import javax.inject.Inject
 
-private const val DELAY_TO_APPLY_THEME = 1000L
+class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
+    layoutId = R.layout.fragment_home
+) {
 
-class HomeFragment : Fragment() {
 
-    @Inject
-    lateinit var viewModel: HomeViewModel
-    lateinit var viewBinding: FragmentHomeBinding
-
-    override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        viewBinding = DataBindingUtil.inflate(inflater, R.layout.fragment_home, container, false)
-        viewBinding.lifecycleOwner = viewLifecycleOwner
-        return viewBinding.root
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        onInitDependencyInjection()
-    }
+    private val navGraphIds = listOf(
+        R.navigation.navigation_spots_list_graph/*,
+        R.navigation.navigation_settings_graph*/
+    )
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        onInitDataBinding()
+        setupToolbar()
+
+    }
+
+    override fun onViewStateRestored(savedInstanceState: Bundle?) {
+        super.onViewStateRestored(savedInstanceState)
+        /*setupBottomNavigationBar()*/
     }
 
 
-    private fun onInitDependencyInjection() {
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.toolbar_menu, menu)
+    }
+
+    override fun onInitDependencyInjection() {
         DaggerHomeComponent
             .builder()
             .coreComponent(App.coreComponent(requireContext()))
@@ -49,7 +44,30 @@ class HomeFragment : Fragment() {
             .inject(this)
     }
 
-    private fun onInitDataBinding() {
+
+    override fun onInitDataBinding() {
         viewBinding.viewModel = viewModel
     }
+
+
+    private fun setupToolbar() {
+        setHasOptionsMenu(true)
+    }
+
+    /*private fun setupBottomNavigationBar() {
+        val navController = viewBinding.bottomNavigation.setupWithNavController(
+            navGraphIds = navGraphIds,
+            fragmentManager = childFragmentManager,
+            containerId = R.id.nav_host_container,
+            intent = requireActivity().intent
+        )
+
+        navController.observe(
+            viewLifecycleOwner,
+            Observer {
+                viewModel.navigationControllerChanged(it)
+                setupActionBarWithNavController(requireCompatActivity(), it)
+            }
+        )
+    }*/
 }

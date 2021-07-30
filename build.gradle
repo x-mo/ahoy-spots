@@ -20,6 +20,13 @@ allprojects {
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
     }
+
+    // Allow 400 errors.
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xmaxerrs" << "1000"
+        }
+    }
 }
 
 task clean(type: Delete) {
