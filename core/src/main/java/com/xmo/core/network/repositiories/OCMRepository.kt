@@ -15,6 +15,7 @@ class OCMRepository(
             id = id,
             apiKey = API_KEY,
         )
+
     }
     //    ArrayList<SpotsResponse>
     suspend fun getSpots(lat: Double, lng: Double): SpotsResponse {

@@ -14,15 +14,15 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 ) {
 
 
-    private val navGraphIds = listOf(
-        R.navigation.navigation_spots_list_graph/*,
-        R.navigation.navigation_settings_graph*/
-    )
+    /*private val navGraphIds = listOf(
+        R.navigation.navigation_spots_list_graph*//*,
+        R.navigation.navigation_settings_graph*//*
+    )*/
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
-//        navigateToSpotsFeature()
+        navigateToSpotsFeature()
 
     }
 
@@ -58,7 +58,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     }
 
     private fun navigateToSpotsFeature(){
-     findNavController().navigate(R.id.spots_list_fragment)
+     /*findNavController().navigate(R.id.action_home_fragment_to_spots_list_fragment)*/
 
     }
 

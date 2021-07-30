@@ -1,5 +1,6 @@
 package com.xmo.list.spotdetails.model
 
+import android.util.Log
 import com.xmo.core.mapper.Mapper
 import com.xmo.core.network.responses.SpotsResponse
 

@@ -35,7 +35,7 @@ class BaseApp : SplitCompatApplication() {
         initTimber()
         initCoreDependencyInjection()
         initAppDependencyInjection()
-        initRandomNightMode()
+//        initRandomNightMode()
     }
 
     private fun initAppDependencyInjection() {

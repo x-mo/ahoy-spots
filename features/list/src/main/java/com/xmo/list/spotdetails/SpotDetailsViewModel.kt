@@ -9,8 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.xmo.core.network.repositiories.OCMRepository
 import com.xmo.list.spotdetails.model.SpotDetails
 import com.xmo.list.spotdetails.model.SpotDetailsMapper
-import javax.inject.Inject
 import kotlinx.coroutines.launch
+import javax.inject.Inject
 
 class SpotDetailsViewModel @Inject constructor(
     @VisibleForTesting(otherwise = PRIVATE)
