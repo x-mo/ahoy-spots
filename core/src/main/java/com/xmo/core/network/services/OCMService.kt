@@ -9,7 +9,7 @@ interface OCMService {
     @GET("/v3/poi")
     suspend fun getSpot(
 //        @Path("id") id: Long,
-        @Query("id") id: Long,
+        @Query("id") id: Int,
         @Query("apikey") apiKey: String,
     ): SpotsResponse
 

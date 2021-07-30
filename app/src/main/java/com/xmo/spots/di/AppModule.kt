@@ -1,7 +1,7 @@
 package com.xmo.spots.di
 
 import android.content.Context
-import com.xmo.spots.App
+import com.xmo.spots.BaseApp
 import dagger.Module
 import dagger.Provides
 
@@ -9,5 +9,5 @@ import dagger.Provides
 class AppModule {
 
    @Provides
-    fun provideContext(application: App): Context = application.applicationContext
+    fun provideContext(application: BaseApp): Context = application.applicationContext
 }

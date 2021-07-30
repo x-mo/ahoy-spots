@@ -10,8 +10,7 @@ class OCMRepository(
     private val service: OCMService
 ) {
 
-    suspend fun getSpot(id: Long): SpotsResponse {
-        val timestamp = System.currentTimeMillis().toString()
+    suspend fun getSpot(id: Int): SpotsResponse {
         return service.getSpot(
             id = id,
             apiKey = API_KEY,

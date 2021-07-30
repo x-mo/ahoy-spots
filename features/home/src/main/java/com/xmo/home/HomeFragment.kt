@@ -2,11 +2,12 @@ package com.xmo.home
 
 import android.os.Bundle
 import android.view.*
+import androidx.navigation.fragment.findNavController
 import com.xmo.core.base.BaseFragment
 import com.xmo.home.databinding.FragmentHomeBinding
 import com.xmo.home.di.DaggerHomeComponent
 import com.xmo.home.di.HomeModule
-import com.xmo.spots.App
+import com.xmo.spots.BaseApp
 
 class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     layoutId = R.layout.fragment_home
@@ -21,12 +22,14 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupToolbar()
+//        navigateToSpotsFeature()
 
     }
 
     override fun onViewStateRestored(savedInstanceState: Bundle?) {
         super.onViewStateRestored(savedInstanceState)
         /*setupBottomNavigationBar()*/
+//    navigateToSpotsFeature()
     }
 
 
@@ -38,7 +41,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
     override fun onInitDependencyInjection() {
         DaggerHomeComponent
             .builder()
-            .coreComponent(App.coreComponent(requireContext()))
+            .coreComponent(BaseApp.coreComponent(requireContext()))
             .homeModule(HomeModule(this))
             .build()
             .inject(this)
@@ -52,6 +55,11 @@ class HomeFragment : BaseFragment<FragmentHomeBinding, HomeViewModel>(
 
     private fun setupToolbar() {
         setHasOptionsMenu(true)
+    }
+
+    private fun navigateToSpotsFeature(){
+     findNavController().navigate(R.id.spots_list_fragment)
+
     }
 
     /*private fun setupBottomNavigationBar() {

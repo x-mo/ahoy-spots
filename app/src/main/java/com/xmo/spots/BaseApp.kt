@@ -14,7 +14,7 @@ import kotlin.random.Random
 /**
  * Base class for maintaining global application state.
  */
-class App : SplitCompatApplication() {
+class BaseApp : SplitCompatApplication() {
 
     lateinit var coreComponent: CoreComponent
 
@@ -27,7 +27,7 @@ class App : SplitCompatApplication() {
          */
         @JvmStatic
         fun coreComponent(context: Context) =
-            (context.applicationContext as? App)?.coreComponent
+            (context.applicationContext as? BaseApp)?.coreComponent
     }
 
     override fun onCreate() {

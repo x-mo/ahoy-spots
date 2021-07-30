@@ -24,9 +24,9 @@ interface CoreComponent {
 
     fun context(): Context
 
-//    fun ocmService(): OCMService
+    fun ocmService(): OCMService
 
-//    fun ocmRepository(): OCMRepository
+    fun ocmRepository(): OCMRepository
 
 //    fun spotsDao(): SpotsDao
 

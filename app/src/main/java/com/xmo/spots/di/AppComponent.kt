@@ -2,7 +2,7 @@ package com.xmo.spots.di
 
 import com.xmo.core.di.CoreComponent
 import com.xmo.core.di.scopes.AppScope
-import com.xmo.spots.App
+import com.xmo.spots.BaseApp
 import dagger.Component
 
 @AppScope
@@ -12,5 +12,5 @@ import dagger.Component
 )
 interface AppComponent {
 
-    fun inject(application: App)
+    fun inject(application: BaseApp)
 }

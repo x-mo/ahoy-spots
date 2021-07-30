@@ -1,11 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    app:startDestination="@id/home_fragment">
+    app:startDestination="@id/spots_list_fragment">
     <fragment
         android:id="@+id/home_fragment"
         android:name="com.xmo.home.HomeFragment"
         android:label="HomeFragment">
 
+        <action
+            android:id="@+id/action_home_fragment_to_snavigatepots_list_fragment"
+            app:destination="@id/spots_list_fragment" />
+    </fragment>
+
+
+    <fragment
+        android:id="@+id/spots_list_fragment"
+        android:name="com.xmo.list.spotslist.SpotsListFragment"
+        android:label="Spots">
+        <deepLink
+            app:uri="android-app://spots.xmo.app/spots_list_fragment" />
+        <action
+            android:id="@+id/action_spotsListFragment_to_spot_details_fragment"
+            app:destination="@+id/spot_details_fragment"
+            app:enterAnim="@anim/nav_default_enter_anim"
+            app:exitAnim="@anim/nav_default_exit_anim"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim"
+            app:popUpTo="@+id/spots_list_fragment" />
+
+    </fragment>
+    <fragment
+        android:id="@+id/spot_details_fragment"
+        android:name="com.xmo.list.spotdetails.SpotDetailsFragment">
+        <argument
+            android:name="spot_id"
+            app:argType="integer" />
     </fragment>
 </navigation>
