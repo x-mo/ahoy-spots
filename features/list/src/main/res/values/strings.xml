@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="spots_only_available_if">Nearby spots are only available if location is provided</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
+    <string name="location_denied_app">Location Permission is denied for this App</string>
+</resources>
