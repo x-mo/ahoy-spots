@@ -1,14 +1,17 @@
 package com.xmo.core.database.spots
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Delete
-import androidx.room.Insert
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface SpotDao {
 
+
+    @Transaction
+    suspend fun updateSpots(spotsList: List<Spot>) {
+        deleteAllSpots()
+        insertSpots(spotsList)
+    }
 
     @Query("SELECT * FROM spots ORDER BY distance")
     fun getAllSpotsLiveData(): LiveData<List<Spot>>

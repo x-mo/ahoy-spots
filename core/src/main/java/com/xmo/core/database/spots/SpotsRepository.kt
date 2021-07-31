@@ -16,6 +16,9 @@ class SpotRepository @Inject constructor(
     fun getAllSpotsLiveData(): LiveData<List<Spot>> =
         spotDao.getAllSpotsLiveData()
 
+    suspend fun updateSpots(spots: List<Spot>) =
+        spotDao.updateSpots(spots)
+
     suspend fun getAllSpots(): List<Spot> =
         spotDao.getAllSpots()
 

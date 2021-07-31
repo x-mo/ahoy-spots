@@ -9,11 +9,11 @@ import com.xmo.core.network.responses.SpotsResponse
  *
  * @see Mapper
  */
-class SpotsListMapper : Mapper<SpotsResponse, List<SpotsItem>> {
+class SpotsListToDBMapper : Mapper<SpotsResponse, List<Spot>> {
 
     override suspend fun map(from: SpotsResponse) =
-        from.toList().map {
-            SpotsItem(
+        from.map {
+            Spot(
                 id = it.ID,
                 distance = it.AddressInfo.Distance,
                 numberOfPoints = it.NumberOfPoints,
