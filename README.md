@@ -2,7 +2,7 @@
 
 ## Dependencies
 
-In order for this project to run you need to supply the Open Charge Map Key in local.properties under
+*In order for this project to run you need to supply the **Open Charge Map Key** in local.properties under*
 ```` 
 ```
 openchargemap.key = <KEY>
