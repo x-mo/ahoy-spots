@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.xmo.core.database.spots.SpotRepository
 import com.xmo.core.livedata.SingleLiveData
 import com.xmo.core.network.repositiories.OCMRepository
+import com.xmo.list.spotdetails.SpotDetailsViewState
 import com.xmo.list.spotslist.model.SpotsItem
 import com.xmo.list.spotslist.model.SpotsListFromDBMapper
 import com.xmo.list.spotslist.model.SpotsListMapper
@@ -48,6 +49,7 @@ class SpotsListViewModel @Inject constructor(
                 // update spots in DB
                 spotRepository.updateSpots(spotsListToDBMapper.map(result))
                 // update spots in view
+                _state.postValue(SpotsListViewState.Loaded)
                 _data.postValue(spotsListFromDBMapper.map(spotRepository.getAllSpots()))
             } catch (e: Exception) {
                 _state.postValue(SpotsListViewState.Error)

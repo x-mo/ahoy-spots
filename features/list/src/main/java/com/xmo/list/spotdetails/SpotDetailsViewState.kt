@@ -13,6 +13,7 @@ sealed class SpotDetailsViewState : BaseViewState {
      * Loading spot detail info.
      */
     object Loading : SpotDetailsViewState()
+    object Loaded : SpotDetailsViewState()
 
     /**
      * Error on loading spot detail info.
@@ -32,6 +33,7 @@ sealed class SpotDetailsViewState : BaseViewState {
      * @return True if is loading state, otherwise false.
      */
     fun isLoading() = this is Loading
+    fun isLoaded() = this is Loaded
 
     /**
      * Check if current view state is [Error].

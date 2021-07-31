@@ -4,4 +4,5 @@
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
     <string name="location_denied_app">Location Permission is denied for this App</string>
+    <string name="charging_spots_near_you">Charging spots near you:</string>
 </resources>

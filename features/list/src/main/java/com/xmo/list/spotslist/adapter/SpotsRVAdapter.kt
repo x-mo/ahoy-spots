@@ -17,14 +17,17 @@ class SpotsRVAdapter : ListAdapter<SpotsItem, SpotsRVAdapter.SpotViewHolder>(Com
 
     class SpotViewHolder(val binding: ItemSpotBinding) : RecyclerView.ViewHolder(binding.root)
 
-    companion object: DiffUtil.ItemCallback<SpotsItem>() {
-        override fun areItemsTheSame(oldItem: SpotsItem, newItem: SpotsItem): Boolean = oldItem === newItem
-        override fun areContentsTheSame(oldItem: SpotsItem, newItem: SpotsItem): Boolean = oldItem.id == newItem.id
+    companion object : DiffUtil.ItemCallback<SpotsItem>() {
+        override fun areItemsTheSame(oldItem: SpotsItem, newItem: SpotsItem): Boolean =
+            oldItem === newItem
+
+        override fun areContentsTheSame(oldItem: SpotsItem, newItem: SpotsItem): Boolean =
+            oldItem.id == newItem.id
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SpotViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
-        val binding = ItemSpotBinding.inflate(layoutInflater)
+        val binding = ItemSpotBinding.inflate(layoutInflater,parent,false)
 
         return SpotViewHolder(binding)
     }
@@ -35,8 +38,9 @@ class SpotsRVAdapter : ListAdapter<SpotsItem, SpotsRVAdapter.SpotViewHolder>(Com
         holder.binding.spot = currentSpot
 
         holder.binding.llItemWrapper.setOnClickListener {
-            Log.d("xox", "clicked ID: ${currentSpot.id}")
-            Navigation.findNavController(it).navigate(SpotsListFragmentDirections.actionSpotsListFragmentToSpotDetailsFragment(currentSpot.id))
+            Navigation.findNavController(it).navigate(
+                SpotsListFragmentDirections.actionSpotsListFragmentToSpotDetailsFragment(currentSpot.id)
+            )
         }
 
         holder.binding.executePendingBindings()

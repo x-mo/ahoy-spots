@@ -35,6 +35,7 @@ class SpotDetailsViewModel @Inject constructor(
             try {
                 val result = ocmRepository.getSpot(spotId)
                 _data.postValue(spotDetailsMapper.map(result))
+                _state.postValue(SpotDetailsViewState.Loaded)
                 Log.d("xox", "loaded:$result")
             } catch (e: Exception) {
                 _state.postValue(SpotDetailsViewState.Error)

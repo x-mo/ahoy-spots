@@ -37,18 +37,13 @@ class SpotsListFragment :
     @Inject
     lateinit var progressDialog: ProgressBar
 
-    /*private val args: SpotsListFragmentArgs by navArgs()*/
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        requestLocationPermissionAndObtainLatLng()
-    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
         setupSpotsAdapter()
 
-
+        requestLocationPermissionAndObtainLatLng()
     }
     override fun onInitDependencyInjection() {
         DaggerSpotsListComponent
@@ -63,16 +58,18 @@ class SpotsListFragment :
         viewBinding.viewModel = viewModel
     }
 
-
+//embed this inside xml layout instead
     private fun onViewStateChange(viewState: SpotsListViewState) {
         when (viewState) {
             is SpotsListViewState.Loading ->
-                progressDialog.visibility = View.VISIBLE
+                viewBinding.progressCircular.visibility = View.VISIBLE
+            is SpotsListViewState.Loaded ->
+                viewBinding.progressCircular.visibility = View.GONE
             is SpotsListViewState.Error ->
-                progressDialog.visibility = View.VISIBLE //show error drawable
+                viewBinding.progressCircular.visibility = View.GONE //show error drawable
             is SpotsListViewState.Dismiss ->
                 findNavController().navigateUp()
-            else -> progressDialog.visibility = View.GONE
+            else -> viewBinding.progressCircular.visibility = View.GONE
         }
     }
 
