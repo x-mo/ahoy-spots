@@ -6,10 +6,10 @@ package com.xmo.list.spotdetails.model
 
 data class SpotDetails(
     val id: Int,
-    val distance: Double,
-    val numberOfPoints: Int,
-    val town: String,
-    val addressTitle: String,
-    val websiteUrl: String,
-    val generalComments: String
+    val distance: Double?,
+    val numberOfPoints: Int?,
+    val town: String?,
+    val addressTitle: String?,
+    val websiteUrl: String?,
+    val generalComments: String?
 )

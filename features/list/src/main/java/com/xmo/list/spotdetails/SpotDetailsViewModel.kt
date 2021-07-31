@@ -1,5 +1,6 @@
 package com.xmo.list.spotdetails
 
+import android.util.Log
 import androidx.annotation.VisibleForTesting
 import androidx.annotation.VisibleForTesting.PRIVATE
 import androidx.lifecycle.LiveData
@@ -34,10 +35,13 @@ class SpotDetailsViewModel @Inject constructor(
             try {
                 val result = ocmRepository.getSpot(spotId)
                 _data.postValue(spotDetailsMapper.map(result))
-
+                Log.d("xox", "loaded:$result")
             } catch (e: Exception) {
                 _state.postValue(SpotDetailsViewState.Error)
+                Log.d("xox",e.message.toString())
             }
+        Log.d("xox","loaded?")
+
         }
     }
 

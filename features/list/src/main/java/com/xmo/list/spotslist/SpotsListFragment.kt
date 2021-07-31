@@ -2,6 +2,7 @@ package com.xmo.list.spotslist
 
 import android.Manifest
 import android.annotation.SuppressLint
+import android.content.Context
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.os.Looper
@@ -37,14 +38,17 @@ class SpotsListFragment :
     lateinit var progressDialog: ProgressBar
 
     /*private val args: SpotsListFragmentArgs by navArgs()*/
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+        requestLocationPermissionAndObtainLatLng()
+    }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
-
         setupSpotsAdapter()
 
-        requestLocationPermissionAndObtainLatLng()
+
     }
     override fun onInitDependencyInjection() {
         DaggerSpotsListComponent
@@ -79,6 +83,8 @@ class SpotsListFragment :
         observe(viewModel.data) {
             Log.d("xox", it.toString())
             it.let(spotsAdapter::submitList)
+//            findNavController().navigate(SpotsListFragmentDirections.actionSpotsListFragmentToSpotDetailsFragment(123))
+
         }
     }
 

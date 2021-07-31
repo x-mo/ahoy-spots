@@ -33,9 +33,10 @@ class SpotDetailsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
+        Log.d("xox","arg ${args.spotId}")
         viewModel.loadSpotDetails(args.spotId)
 
-        observe(viewModel.data) { Log.d("SDF-Data", it.generalComments) }
+        observe(viewModel.data) { Log.d("SDF-Data", it.generalComments.toString()) }
     }
 
     override fun onInitDependencyInjection() {

@@ -7,6 +7,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.xmo.core.database.spots.SpotRepository
+import com.xmo.core.livedata.SingleLiveData
 import com.xmo.core.network.repositiories.OCMRepository
 import com.xmo.list.spotslist.model.SpotsItem
 import com.xmo.list.spotslist.model.SpotsListFromDBMapper
@@ -58,4 +59,5 @@ class SpotsListViewModel @Inject constructor(
     fun dismissSpotsList() {
         _state.postValue(SpotsListViewState.Dismiss)
     }
+
 }
