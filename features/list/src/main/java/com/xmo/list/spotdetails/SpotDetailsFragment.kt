@@ -19,6 +19,10 @@ import com.xmo.list.spotdetails.di.SpotDetailsModule
 import com.xmo.list.spotdetails.model.SpotDetails
 import com.xmo.spots.BaseApp.Companion.coreComponent
 import javax.inject.Inject
+import android.content.Intent
+
+
+
 
 class SpotDetailsFragment :
     BaseFragment<FragmentSpotDetailsBinding, SpotDetailsViewModel>(
@@ -33,10 +37,12 @@ class SpotDetailsFragment :
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
-        Log.d("xox","arg ${args.spotId}")
+
         viewModel.loadSpotDetails(args.spotId)
 
-        observe(viewModel.data) { Log.d("SDF-Data", it.generalComments.toString()) }
+        observe(viewModel.data) {
+            viewBinding.spot = it
+        }
     }
 
     override fun onInitDependencyInjection() {

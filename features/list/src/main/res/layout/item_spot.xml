@@ -35,14 +35,14 @@
                 android:textStyle="bold"
                 tools:text="Dubai Marina" />
 
-            <TextView
+            <!--<TextView
                 android:id="@+id/tv_distance"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text='@{String.format("%.1f", spot.distance)+` KM`}'
                 android:textSize="14sp"
-                tools:text="1.2 KM" />
+                tools:text="1.2 KM" />-->
 
         </LinearLayout>
     </androidx.cardview.widget.CardView>
