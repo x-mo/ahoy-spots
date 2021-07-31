@@ -1,6 +1,7 @@
 package com.xmo.core.di
 
 import android.content.Context
+import com.xmo.core.database.spots.SpotDao
 import com.xmo.core.di.modules.ContextModule
 import com.xmo.core.di.modules.DatabaseModule
 import com.xmo.core.di.modules.NetworkModule
@@ -28,7 +29,7 @@ interface CoreComponent {
 
     fun ocmRepository(): OCMRepository
 
-//    fun spotsDao(): SpotsDao
+    fun spotsDao(): SpotDao
 
     fun themeUtils(): ThemeUtils
 }
