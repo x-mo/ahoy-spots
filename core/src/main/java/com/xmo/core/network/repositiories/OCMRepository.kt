@@ -14,6 +14,7 @@ class OCMRepository(
         return service.getSpot(
             id = id,
             apiKey = API_KEY,
+            unit = "KM"
         )
 
     }
@@ -24,7 +25,8 @@ class OCMRepository(
             outputFormat = "JSON",
             maxResults = 40,
             latitude = lat,
-            longitude = lng
+            longitude = lng,
+            unit = "KM"
         )
     }
 }

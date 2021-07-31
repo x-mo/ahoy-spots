@@ -7,6 +7,10 @@
     <data>
 
         <variable
+            name="adapter"
+            type="com.xmo.list.spotslist.adapter.SpotsRVAdapter" />
+
+        <variable
             name="viewModel"
             type="com.xmo.list.spotslist.SpotsListViewModel" />
 
@@ -15,9 +19,22 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#FFFF00"
         android:animateLayoutChanges="true">
 
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/spotsRecyclerView"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:visibility="visible"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:setAdapter="@{adapter}"
+            app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

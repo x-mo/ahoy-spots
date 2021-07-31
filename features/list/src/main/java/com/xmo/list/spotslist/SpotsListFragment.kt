@@ -20,6 +20,7 @@ import com.xmo.core.base.BaseFragment
 import com.xmo.core.extensions.observe
 import com.xmo.list.R
 import com.xmo.list.databinding.FragmentSpotListBinding
+import com.xmo.list.spotslist.adapter.SpotsRVAdapter
 import com.xmo.list.spotslist.di.DaggerSpotsListComponent
 import com.xmo.list.spotslist.di.SpotsListModule
 import com.xmo.spots.BaseApp
@@ -41,11 +42,10 @@ class SpotsListFragment :
         super.onViewCreated(view, savedInstanceState)
         observe(viewModel.state, ::onViewStateChange)
 
+        setupSpotsAdapter()
+
         requestLocationPermissionAndObtainLatLng()
-
-        observe(viewModel.data) { Log.d("xox", it.toString()) }
     }
-
     override fun onInitDependencyInjection() {
         DaggerSpotsListComponent
             .builder()
@@ -69,6 +69,16 @@ class SpotsListFragment :
             is SpotsListViewState.Dismiss ->
                 findNavController().navigateUp()
             else -> progressDialog.visibility = View.GONE
+        }
+    }
+
+    private fun setupSpotsAdapter(){
+        val spotsAdapter = SpotsRVAdapter()
+
+        viewBinding.adapter = spotsAdapter
+        observe(viewModel.data) {
+            Log.d("xox", it.toString())
+            it.let(spotsAdapter::submitList)
         }
     }
 

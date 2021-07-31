@@ -10,6 +10,7 @@ interface OCMService {
     suspend fun getSpot(
         @Query("id") id: Int,
         @Query("key") apiKey: String,
+        @Query("distanceunit") unit: String,
     ): SpotsResponse
 
 
@@ -21,5 +22,6 @@ interface OCMService {
         @Query("maxresults") maxResults: Int,
         @Query("latitude") latitude: Double,
         @Query("longitude") longitude: Double,
+        @Query("distanceunit") unit: String,
     ): SpotsResponse
 }
